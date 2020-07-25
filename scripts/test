@@ -1,0 +1,22 @@
+#!/bin/sh
+# vim: set ts=4:
+#
+# Runs linters, tests etc.
+#
+# This script follows convention https://github.com/github/scripts-to-rule-them-all.
+set -u
+
+. "$(dirname "$0")/bootstrap"
+
+info 'Running tests...'
+py.test -v
+
+info 'Checking types...'
+python3 -m mypy --check-untyped-defs --silent-imports *.py
+cat <<-EOF >&2
+	NOTE: Since we currently don't have stub files for the dependencies
+	it basically checks only types from the stdlib!
+EOF
+
+info 'Running linter...'
+python3 -m pycodestyle
