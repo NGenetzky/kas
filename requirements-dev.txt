@@ -1,0 +1,9 @@
+# TODO: Express version requirements
+flake8
+pycodestyle
+doc8
+Pygments
+
+# NOTE: This was split because the TODO below is more important.
+# TODO: Express version requirements
+pytest
