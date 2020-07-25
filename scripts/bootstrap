@@ -66,3 +66,8 @@ python3 -m pip install --disable-pip-version-check -r requirements-dev.txt 2>&1 
 
 # Also install the package we are developing on, but in "editable" mode.
 python3 -m pip install --editable ./
+
+if ! command -v hg > /dev/null ; then
+	warn 'WARN: Unable to locate hg. Install mercurial to avoid errors during pytest.'
+	exit 0
+fi
