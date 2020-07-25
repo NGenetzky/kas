@@ -1,0 +1,37 @@
+From 3330a511b54585d21a4e21c84f8551214d0fc2aa Mon Sep 17 00:00:00 2001
+From: Nathan Genetzky <nathan@genetzky.us>
+Date: Sat, 25 Jul 2020 13:54:41 -0500
+Subject: [PATCH] repos: GitRepo fetch_cmd shouldn't default to "git fetch
+ --all"
+
+The fetch() method for git will call git fetch --all ; this causes
+issues when user has multiple remotes. We are able to simply call
+'fetch' because by default the origin remote will be used.
+
+From git help fetch:
+
+> When no remote is specified, by default the origin remote will be
+used, unless there's an upstream branch configured for the current
+branch.
+
+Signed-off-by: Nathan Genetzky <nathan@genetzky.us>
+---
+ kas/repos.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/kas/repos.py b/kas/repos.py
+index fa10c0b..001a4a2 100644
+--- a/kas/repos.py
++++ b/kas/repos.py
+@@ -356,7 +356,7 @@ class GitRepo(RepoImpl):
+         return ['git', 'cat-file', '-t', self.refspec]
+ 
+     def fetch_cmd(self):
+-        return ['git', 'fetch', '--all']
++        return ['git', 'fetch']
+ 
+     def is_dirty_cmd(self):
+         return ['git', 'status', '-s']
+-- 
+2.26.2
+
