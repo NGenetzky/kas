@@ -1,3 +1,4 @@
+#!/bin/sh
 # vim: set ts=4:
 
 info() {
