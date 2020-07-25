@@ -7,13 +7,17 @@
 # Original source: https://gist.github.com/jirutka/c5200ddcf00a86603314988fcad9532f
 set -u
 
-_SCRIPT_REL_TO_BASE='../'
-D_SCRIPT="$(CDPATH='' cd -- "$(dirname -- "$0")" && pwd -P)"
-D_BASE="${D_SCRIPT}/${_SCRIPT_REL_TO_BASE}"
-readonly \
-	D_BASE \
-	D_SCRIPT \
-	_SCRIPT_REL_TO_BASE
+# This if block ensures script can be sourced.
+if [ -z "${D_BASE+x}" ] ; then # if unset or empty
+	_SCRIPT_REL_TO_BASE='../'
+	D_SCRIPT="$(CDPATH='' cd -- "$(dirname -- "$0")" && pwd -P)"
+	D_BASE="${D_SCRIPT}/${_SCRIPT_REL_TO_BASE}"
+	readonly \
+		D_BASE \
+		D_SCRIPT
+	unset \
+		_SCRIPT_REL_TO_BASE
+fi
 
 cd "${D_BASE}" || exit 1
 
