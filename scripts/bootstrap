@@ -63,3 +63,6 @@ info 'Installing Python modules...'
 python3 -m pip install --disable-pip-version-check -r requirements-dev.txt 2>&1 \
 	| sed	-e '/^Requirement already satisfied/d' \
 			-e '/don.t match your environment$/d'
+
+# Also install the package we are developing on, but in "editable" mode.
+python3 -m pip install --editable ./
