@@ -4,9 +4,20 @@
 # Runs linters, tests etc.
 #
 # This script follows convention https://github.com/github/scripts-to-rule-them-all.
+# Original source: https://gist.github.com/jirutka/c5200ddcf00a86603314988fcad9532f
 set -u
 
-. "$(dirname "$0")/bootstrap"
+_SCRIPT_REL_TO_BASE='../'
+D_SCRIPT="$(CDPATH='' cd -- "$(dirname -- "$0")" && pwd -P)"
+D_BASE="${D_SCRIPT}/${_SCRIPT_REL_TO_BASE}"
+readonly \
+	D_BASE \
+	D_SCRIPT \
+	_SCRIPT_REL_TO_BASE
+
+cd "${D_BASE}" || exit 1
+
+. "./scripts/bootstrap"
 
 info 'Running tests...'
 py.test -v

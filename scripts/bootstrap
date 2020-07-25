@@ -8,10 +8,22 @@
 #   PYTHON : Python executable to use (default is python3 or python on PATH).
 #
 # This script follows convention https://github.com/github/scripts-to-rule-them-all.
+# Original source: https://gist.github.com/jirutka/c5200ddcf00a86603314988fcad9532f
 set -eu
 
 cd "$(dirname "$0")/.."
-. script/utils.sh
+
+_SCRIPT_REL_TO_BASE='../'
+D_SCRIPT="$(CDPATH='' cd -- "$(dirname -- "$0")" && pwd -P)"
+D_BASE="${D_SCRIPT}/${_SCRIPT_REL_TO_BASE}"
+readonly \
+	D_BASE \
+	D_SCRIPT \
+	_SCRIPT_REL_TO_BASE
+
+cd "${D_BASE}" || exit 1
+
+. "./scripts/utils.sh"
 
 readonly ENV_DIR="$(pwd)/.venv"
 
