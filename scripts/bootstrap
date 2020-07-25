@@ -11,8 +11,6 @@
 # Original source: https://gist.github.com/jirutka/c5200ddcf00a86603314988fcad9532f
 set -eu
 
-cd "$(dirname "$0")/.."
-
 _SCRIPT_REL_TO_BASE='../'
 D_SCRIPT="$(CDPATH='' cd -- "$(dirname -- "$0")" && pwd -P)"
 D_BASE="${D_SCRIPT}/${_SCRIPT_REL_TO_BASE}"
@@ -49,10 +47,11 @@ if [ ! -f "$ENV_DIR/bin/python3" ]; then
 	hash -r 2>&1 >/dev/null
 fi
 
+. "${ENV_DIR}/bin/activate"
+
 if ! is_on_path "$ENV_DIR/bin"; then
-	warn '! You should add ".venv/bin" to your PATH. Source .envrc" into your !'
-	warn '! shell, or install direnv or similar tool that will do it for you. !'
-	. .envrc
+	warn 'WARN: Failed to activate'
+	exit 1
 fi
 
 
