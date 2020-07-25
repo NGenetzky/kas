@@ -33,7 +33,18 @@ class GitRepo(RepoImpl):
 
 I can, but it won't be immediate. I am still kind of new to the old school patch emailing collaboration approach.
 
-- [ ] Create patch
-- [ ] Submit patch to kas-devel
+- [x] Create patch
+- [x] Submit patch to kas-devel
 - [ ] Create PR
 - [ ] Await feedback
+
+## Mailing list (xiUoNPQ0IaU)
+
+- [xiUoNPQ0IaU](https://groups.google.com/forum/#!topic/kas-devel/xiUoNPQ0IaU)
+
+### 3 NGenetzky commented on xiUoNPQ0IaU
+
+Submitting patch for review.
+
+- [local](xiUoNPQ0IaU/0001-repos-GitRepo-fetch_cmd-shouldn-t-default-to-git-fet.patch)
+- [docs.google.com](https://docs.google.com/viewer?a=v&pid=forums&srcid=MTUxMDY3MjI4MDU2MzY4NzAwODIBMTAxMjM0ODMyMzE3NDA3OTI2NTkBYWtHdHhQcHpDQUFKATAuMQEBdjI&authuser=0)
